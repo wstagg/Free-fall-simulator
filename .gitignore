@@ -81,3 +81,6 @@ test/test_runner
 .cache/clangd/index/Text.h.CC43AEF3A4D734DC.idx
 .cache/clangd/index/User_input_text.cpp.CDBEADEFDCB2B97A.idx
 .cache/clangd/index/User_input_text.h.8523C33517805DCC.idx
+/.vs
+/out/build/x64-Debug
+/CMakeSettings.json

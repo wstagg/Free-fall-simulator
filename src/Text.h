@@ -28,7 +28,7 @@ public:
 private:
 	std::map<int, std::string> text_options =
 	{
-		{0, "Welcome to Freefall Calculator!" },
+		{0, "Welcome to Free fall simulator!" },
 		{1, "Please choose the object you would like to drop...."},
 		{2, "Push space to continue..."},
 		{3, "Cube selected!"},

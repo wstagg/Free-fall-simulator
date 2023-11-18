@@ -20,14 +20,14 @@ void App::init()
 {
     double x_res{ 1000.f };
     double y_res{ 800.f };
-    sf::RenderWindow window(sf::VideoMode(static_cast<u_int>(x_res), static_cast<u_int>(y_res)), "Freefall Calculator");
+    sf::RenderWindow window(sf::VideoMode(static_cast<unsigned int>(x_res), static_cast<unsigned int>(y_res)), "Free fall simulator");
     window.setFramerateLimit(60);
 
     /*------------------------------------*/
     /* Create text to display on screen   */
     /*------------------------------------*/
     sf::Font arial;
-    if (!arial.loadFromFile("fonts/arial.ttf"))
+    if (!arial.loadFromFile("fonts//arial.ttf"))
     {
         std::cout << "Cannot load font file." << std::endl;
     }
