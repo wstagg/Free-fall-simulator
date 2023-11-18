@@ -1,0 +1,84 @@
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+
+# Compiled Object files
+**/.DS_Store
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+**/cmake-build-debug
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/install_manifest.txt
+**/CMakeFiles/
+**/CTestTestfile.cmake
+**/Makefile
+**/*.cbp
+**/CMakeScripts
+**/compile_commands.json
+
+include/divisible/*
+
+
+## Local 
+
+.idea/*.xml
+
+build/**/*
+
+include/*
+lib/*
+bin/*
+test/test_runner
+.cache/clangd/index/App.cpp.999499EB7954B957.idx
+.cache/clangd/index/App.h.2876B1BD1365BEB6.idx
+.cache/clangd/index/Clock.cpp.98157B1C03934AE0.idx
+.cache/clangd/index/Clock.h.DE9C1D5578A4B177.idx
+.cache/clangd/index/Draw.cpp.93685890F246AC2A.idx
+.cache/clangd/index/Draw.h.3FD37E144818DEC8.idx
+.cache/clangd/index/Events.cpp.9AE8B8FA6E5D6677.idx
+.cache/clangd/index/Events.h.9652F4DE77202B99.idx
+.cache/clangd/index/Freefall_object.cpp.4A025F61355016C8.idx
+.cache/clangd/index/Freefall_object.h.B23B84BB0B297132.idx
+.cache/clangd/index/main.cpp.6D006C987E700847.idx
+.cache/clangd/index/Text.cpp.5EB11189A82E6F7D.idx
+.cache/clangd/index/Text.h.CC43AEF3A4D734DC.idx
+.cache/clangd/index/User_input_text.cpp.CDBEADEFDCB2B97A.idx
+.cache/clangd/index/User_input_text.h.8523C33517805DCC.idx
+src/Freefall_object.h
