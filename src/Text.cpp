@@ -13,8 +13,8 @@ void Text::welcome()
     if (*next_display == 0)
     {
         set_text(0);
-        text.setPosition(165, 300);
-        text.setCharacterSize(50);
+        text.setPosition((centreScreen_x - halfScreen_x) - 300, centreScreen_y - halfScreen_y);
+        text.setCharacterSize(150);
     }
     else if (*next_display == 1)
     {
@@ -24,15 +24,16 @@ void Text::welcome()
 
 void Text::press_space()
 {
-    text.setPosition(320, 700);
+    text.setPosition((centreScreen_x - halfScreen_x) + 200, centreScreen_y + halfScreen_y);
     set_text(2);
+    text.setCharacterSize(100);
 }
 
 void Text::choose_obj()
 {
     set_text(1);
-    text.setPosition(165, 0);
-    text.setCharacterSize(30);
+    text.setPosition((centreScreen_x - halfScreen_x) - 300 , 0);
+    text.setCharacterSize(100);
 }
 
 void Text::cube_sel()

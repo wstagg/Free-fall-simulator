@@ -18,10 +18,15 @@ App::~App()
 
 void App::init()
 {
-    double x_res{ 1000.f };
-    double y_res{ 800.f };
-    sf::RenderWindow window(sf::VideoMode(static_cast<unsigned int>(x_res), static_cast<unsigned int>(y_res)), "Free fall simulator");
+    unsigned int x_res{ sf::VideoMode::getDesktopMode().width };
+    unsigned int y_res{ sf::VideoMode::getDesktopMode().height };
+
+    std::cout << "xres = " << x_res << " yres = " << y_res << std::endl; // debug 
+    std::cout << "xres / 2 = " << x_res/2 << " yres/2 = " << y_res/2 << std::endl; // debug 
+
+    sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "Free fall simulator");
     window.setFramerateLimit(60);
+    //window.setVerticalSyncEnabled(true);
 
     /*------------------------------------*/
     /* Create text to display on screen   */

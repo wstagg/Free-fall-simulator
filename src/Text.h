@@ -42,8 +42,17 @@ private:
 	sf::Font* font;
 	sf::Text text;
 	int* next_display;
-	/*sf::Vector2f cube_text_pos(230, 500);
-	sf::Vector2f ball_text_pos(640, 500);*/
 	void set_text(int text_choice);
+
+	unsigned int screen_x{ sf::VideoMode::getDesktopMode().width };
+	unsigned int centreScreen_x{ sf::VideoMode::getDesktopMode().width / 2 };
+	unsigned int halfScreen_x{ centreScreen_x / 2 };
+	
+	unsigned int screen_y{ sf::VideoMode::getDesktopMode().height };
+	unsigned int centreScreen_y{ sf::VideoMode::getDesktopMode().height / 2 };
+	unsigned int halfScreen_y{ centreScreen_y / 2 };
+
+
+
 };
 

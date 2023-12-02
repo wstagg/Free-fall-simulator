@@ -1,9 +1,4 @@
 #include "Freefall_object.h"
-#include "SFML/Graphics/Texture.hpp"
-#include "SFML/System/Vector2.hpp"
-#include <cmath>
-#include <iostream>
-#include <string>
 
 
 /* Freefall_object class constructor */
@@ -13,6 +8,8 @@ object_chosen(_choice)
 {
     if(_choice == Obj_choice::ball)
     {
+        sf::Vector2f ball_position{ static_cast<float>(halfScreen_xRight), static_cast<float>(halfScreen_y) };
+
         object_position = ball_position;
         ball.setRadius(radius);
         ball.setPosition(ball_position);
@@ -21,6 +18,8 @@ object_chosen(_choice)
     }
     else if (_choice == Obj_choice::cube)
     {
+        sf::Vector2f cube_position{ static_cast<float>(halfScreen_xLeft),  static_cast<float>(halfScreen_y) };
+        
         object_position = cube_position;
         cube.setSize(cube_size);
         cube.setPosition(cube_position);
@@ -118,9 +117,6 @@ double Freefall_object::calculate_Distance_Travelled_In_Time(double fall_time, d
 void Freefall_object::obj_fall_pos(double screen_ht)
 {
     static char first_pass{0};
-    //sf::Vector2f ff_pos(500.f, 0.f);
-    //float ball_rad{ 30.f };
-    //sf::Vector2f ff_cube_size(60.f, 60.f);
 
     if (!first_pass)
     {
@@ -137,7 +133,6 @@ void Freefall_object::obj_fall_pos(double screen_ht)
     double fall_time = ff_clock.return_elapsed_millisecs()/1000.0;
     double max_fall_time = calculate_free_fall_time(in_obj_mass, in_drop_ht);
     double max_distance = calculate_Distance_Travelled_In_Time(max_fall_time, in_obj_mass);
-    //double max_velocity = calculate_velocity(max_fall_time, in_obj_mass);
     
     if (fall_time > max_fall_time)
     {
@@ -145,7 +140,6 @@ void Freefall_object::obj_fall_pos(double screen_ht)
     }
 
     double currentDistance = calculate_Distance_Travelled_In_Time(fall_time, in_obj_mass);
-    //double currentVelocity = calculate_velocity(fall_time,in_obj_mass);
     double y = currentDistance / max_distance * screen_ht;
 
     if (fall_enabled)
@@ -154,10 +148,12 @@ void Freefall_object::obj_fall_pos(double screen_ht)
         {
             case(Obj_choice::cube):
                 cube.setPosition(cube.getPosition().x, y);
+                break;
 
             case(Obj_choice::ball):
                 ball.setPosition(ball.getPosition().x, y);
-            
+                break;
+
             case(Obj_choice::No_choice):
                 break;
         }
@@ -173,8 +169,9 @@ void Freefall_object::obj_fall_pos(double screen_ht)
 std::string Freefall_object::get_obj_height()
 {
     static double current_height{in_drop_ht};
-    double screen_ht{800};
+    unsigned int screen_ht{ sf::VideoMode::getDesktopMode().height };
     object_chosen == Obj_choice::cube ? screen_ht -= ff_cube_size.y : screen_ht -= (ball_rad * 2);
+    
     static double pix_per_meter{screen_ht / in_drop_ht};
     const double ppm {screen_ht / in_drop_ht};
 
@@ -186,12 +183,14 @@ std::string Freefall_object::get_obj_height()
                 --current_height;
                 pix_per_meter += ppm;
             }
+            break;
         case Obj_choice::ball:
             if (ball.getPosition().y > pix_per_meter)
             {
                 --current_height;
                pix_per_meter += ppm;
             }
+            break;
         case(Obj_choice::No_choice):
             break;
     }

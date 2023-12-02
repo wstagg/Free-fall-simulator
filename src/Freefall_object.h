@@ -1,11 +1,12 @@
 #pragma once
 
-#include "SFML/Graphics/Color.hpp"
-#include "SFML/System/Vector2.hpp"
+#include <SFML/Graphics.hpp>
+
 #include "Clock.h"
 
-#include <SFML/Graphics.hpp>
 #include <string>
+#include <iostream>
+#include <cmath>
 
 enum class Obj_choice {cube, ball, No_choice};
 
@@ -26,18 +27,18 @@ public:
 private:
     sf::CircleShape ball;
     sf::RectangleShape cube;
-    sf::Vector2f ball_position {600.f, 300.f};
-    sf::Vector2f cube_position {200.f, 300.f};
+    //sf::Vector2f cube_position { halfScreen_xleft, 300.f};
+    //sf::Vector2f ball_position { static_cast<float>(halfScreen_xright), 300.f};
     sf::Vector2f object_position;
     sf::Color outline_colour {sf::Color::White};
     sf::Texture texture;
-    sf::Vector2f cube_size {150.f, 150.f};
+    sf::Vector2f cube_size {500.f, 500.f};
     float ball_rad{ 30.f };
     sf::Vector2f ff_pos {500.f, 0.f};
     sf::Vector2f ff_cube_size {60.f, 60.f};
 
     float outline_thickness{10.f};
-    float radius{75.f};
+    float radius{300.f};
     double in_drop_ht{};
     double in_obj_mass{};
     Clock ff_clock;
@@ -49,13 +50,23 @@ private:
     double calculate_free_fall_time(double mass, double height);
     double calculate_Distance_Travelled_In_Time(double fall_time, double mass);
 
-    const double g{ 9.80665 };       // Gravity (m/s2)
-    const double p{ 1.2041 };        // Density of air (kg/m3)
-    const double e{ 2.71828 };       // Euler's number (e)
-    const double k_sphere{ 0.47 };   //  sphere(kg/m)
-    const double k_cube{ 1.05 };     // Air resistance cube(kg/m)
-    const double pi{ 3.142 };        // Pi
-    double drag_coefficient{0};
+    const double g          { 9.80665 };       // Gravity (m/s2)
+    const double p          { 1.2041 };        // Density of air (kg/m3)
+    const double e          { 2.71828 };       // Euler's number (e)
+    const double k_sphere   { 0.47 };          //  sphere(kg/m)
+    const double k_cube     { 1.05 };          // Air resistance cube(kg/m)
+    const double pi         { 3.142 };         // Pi
+    double drag_coefficient {0};
+
+    // screen positioning
+    unsigned int screen_x{ sf::VideoMode::getDesktopMode().width };
+    unsigned int screen_Xcentre{ (sf::VideoMode::getDesktopMode().width) / 2 };
+    unsigned int halfScreen_xLeft{ screen_Xcentre / 2 };
+    unsigned int halfScreen_xRight{ screen_Xcentre + halfScreen_xLeft };
+
+    unsigned int screen_y{ sf::VideoMode::getDesktopMode().height };
+    unsigned int centreScreen_y{ sf::VideoMode::getDesktopMode().height / 2 };
+    unsigned int halfScreen_y{ centreScreen_y / 2 };
 };
 
 /* Not used */
